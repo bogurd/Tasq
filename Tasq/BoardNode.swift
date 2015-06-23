@@ -23,7 +23,7 @@ class BoardNode: SKNode{
     static var sharedNode = BoardNode()
     
     var boardSize = Int()
-    var board = Array<Array<Bool>>()
+    var board = Array<Array<Light>>()
     var difficulty = gameDifficulty.normal
     
     var boardArea = SKShapeNode()
@@ -39,31 +39,26 @@ class BoardNode: SKNode{
         boardArea.position.x += (screenSize.width-screenSize.width*borderScale)/2.0
         
         boardSize = 2*difficulty.rawValue+1
-        println("boardsize is \(boardSize)")
         //loop through
         
-        println("is this ever executed?")
     }
     
     
 
     func fillBoard(){
         for x in 1...boardSize {
-            println("x = \(x)")
             
             //array with a light row
-            var lightColumn = [Bool()]
+            var lightColumn = [Light]()
             
             for y in 1...boardSize {
-                println("y = \(y)")
                 
                 //Calculate the box size (one dimension, it's a square so it doesn't matter)
                 
                 //Create a light object and put the boolvalue inside the column/board (unsure if it copies or references, ideally, it should reference)
-                println("is that ever executed?")
                 
                 var light = Light(position: (x,y))
-                lightColumn.append(light.isOn)
+                lightColumn.append(light)
                 //println("appended Light of position \(light.positionInBoard)")
                 
                 

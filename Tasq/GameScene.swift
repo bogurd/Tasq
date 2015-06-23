@@ -25,6 +25,12 @@ class GameScene: SKScene {
         
         for touch in (touches as! Set<UITouch>) {
             let location = touch.locationInNode(self)
+            let spriteTouched = self.nodeAtPoint(location)
+            
+            if spriteTouched.name == "Light" {
+                let light = spriteTouched as! Light
+                light.touched()
+            }
             println(location)
             
 //            let light = Light(position: (1, 3), boxSize: CGSize(width: 50, height: 50))
@@ -38,3 +44,4 @@ class GameScene: SKScene {
         /* Called before each frame is rendered */
     }
 }
+

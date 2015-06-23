@@ -16,55 +16,89 @@ class Light: SKShapeNode{
     init(position: (x: Int, y: Int)){
         positionInBoard = position
         super.init()
-        
+        self.name = "Light"
         //Expression to calculate the size of the box
         let borders = 2.0 * borderFraction
-        println("borders done")
-        println("singleton size is \(BoardNode.sharedNode.boardSize)")
         let margins = Double((BoardNode.sharedNode.boardSize-1)) * marginFraction
-        println("margins done")
         let boxSizeFactor = 1.0 - borders - margins
-        println("boxfactor done")
         let boxSize = (boxSizeFactor/Double(BoardNode.sharedNode.boardSize))*Double(screenSize.width)
-        println("boxsize done")
         //Expression to calculate actual position on the device screen, had to split up
         let deltaX = Double(position.x-1)
-        println("deltax done")
         let deltaY = Double(BoardNode.sharedNode.boardSize-position.y)
-        println("deltay done")
         var xpos = border + deltaX*boxSize + deltaX*margin
-        println("xpos done")
         var ypos = border + deltaY*boxSize + deltaY*margin
-        println("ypos done")
         xpos += (Double(borderScale-1)*Double(screenSize.width))/2
         ypos += (Double(borderScale-1)*Double(screenSize.width))/2
         
         var lightRect = CGRect(origin: CGPoint(x: xpos, y: ypos), size: CGSize(width: boxSize, height: boxSize))
         self.path = CGPathCreateWithRoundedRect(lightRect, 2.0, 2.0, nil)
-        println("rect+path done")
         
-        self.fillColor = bgColor
+        self.fillColor = lightColorOff
         self.lineWidth = 0
         
         BoardNode.sharedNode.boardArea.addChild(self)
-        println("child done")
+        
+        
+        //TempLabeling
+        if debug{
+            let label = SKLabelNode(text: "x:\(self.positionInBoard.x),y:\(self.positionInBoard.y)")
+            label.position = CGPoint(x: xpos + boxSize/2, y: ypos + boxSize/2)
+            label.fontSize = 7.0
+            BoardNode.sharedNode.boardArea.addChild(label)
+        }
+
     }
 
    
     
     func toggle(){
         self.isOn = !self.isOn
-        //self.color = nil //something in the future
+        
+        if self.isOn{
+            self.fillColor = lightColorOn
+        }else{
+            self.fillColor = lightColorOff
+        }
     }
     
-//    func touched(){
-//        let x = positionInBoard.x
-//        let y = positionInBoard.y
-//        
-//        self.toggle()
-//        //BoardNode().board[x+1][y+1].toggle()
-//        
-//    }
+    func touched(){
+        var max = BoardNode.sharedNode.boardSize
+        var x = positionInBoard.x
+        var y = positionInBoard.y
+        //convert conventional counting to array places
+        x -= 1
+        y -= 1
+        max -= 1
+        self.toggle()
+        
+        //Check if the adjacent lights exist and toggle them (couldn't think of a better way to do it)
+        if x-1>=0{
+            BoardNode.sharedNode.board[x-1][y].toggle()
+        }
+        if x+1<=max{
+            BoardNode.sharedNode.board[x+1][y].toggle()
+        }
+        if y-1>=0{
+            BoardNode.sharedNode.board[x][y-1].toggle()
+        }
+        if y+1<=max{
+            BoardNode.sharedNode.board[x][y+1].toggle()
+        }
+
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        /* Called when a touch begins */
+        
+        for touch in (touches as! Set<UITouch>) {
+            println("touched a light or nah?")
+            
+            //            let light = Light(position: (1, 3), boxSize: CGSize(width: 50, height: 50))
+            //            light.position = location
+            //            println("made light at \(location)")
+            //            BoardNode().boardArea.addChild(light)
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
