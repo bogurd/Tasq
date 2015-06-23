@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+
+//For now pretty empty 
+
+enum gameDifficulty: Int{
+    case easy = 1
+    case normal
+    case hard
+    case extreme
+}
