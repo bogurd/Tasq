@@ -14,7 +14,7 @@ class Light: SKShapeNode{
     var isOn:Bool = false
     
     init(position: (x: Int, y: Int)){
-        positionInBoard = position
+        self.positionInBoard = position
         super.init()
         self.name = "Light"
         //Expression to calculate the size of the box
@@ -28,7 +28,8 @@ class Light: SKShapeNode{
         var xpos = border + deltaX*boxSize + deltaX*margin
         var ypos = border + deltaY*boxSize + deltaY*margin
         xpos += (Double(borderScale-1)*Double(screenSize.width))/2
-        ypos += (Double(borderScale-1)*Double(screenSize.width))/2
+        ypos += (Double(borderScale-1)*Double(screenSize.width))/4
+        //Actually not sure if ypos is perfectly centered, will have to see. 
         
         var lightRect = CGRect(origin: CGPoint(x: xpos, y: ypos), size: CGSize(width: boxSize, height: boxSize))
         self.path = CGPathCreateWithRoundedRect(lightRect, 2.0, 2.0, nil)

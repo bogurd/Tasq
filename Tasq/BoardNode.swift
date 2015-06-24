@@ -24,7 +24,6 @@ class BoardNode: SKNode{
     
     var boardSize = Int()
     var board = Array<Array<Light>>()
-    var difficulty = gameDifficulty.normal
     
     var boardArea = SKShapeNode()
     var rect = CGRect(origin: CGPointZero, size: CGSize(width: screenSize.width*borderScale, height: screenSize.width*borderScale))

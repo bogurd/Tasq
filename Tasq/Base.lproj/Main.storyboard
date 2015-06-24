@@ -1,13 +1,91 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ag6-OE-QYy">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
+        <!--Game Difficulty Controller-->
+        <scene sceneID="OaA-OZ-Hl1">
+            <objects>
+                <viewController id="GZQ-e3-JEz" customClass="GameDifficultyController" customModule="Tasq" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uwu-Ma-lFp"/>
+                        <viewControllerLayoutGuide type="bottom" id="D91-IL-3zf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bWe-Kp-9yo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rep-ay-2ys">
+                                <rect key="frame" x="275" y="190" width="50" height="30"/>
+                                <state key="normal" title="Normal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createNormalGame:" destination="GZQ-e3-JEz" eventType="touchUpInside" id="ZqX-hD-OXl"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="2lb-ET-Ubo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VsY-nZ-cPd">
+                                <rect key="frame" x="283" y="290" width="34" height="30"/>
+                                <state key="normal" title="Hard">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createHardGame:" destination="GZQ-e3-JEz" eventType="touchUpInside" id="jOC-h1-BYP"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="hUE-MK-wBk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNj-Db-f0f">
+                                <rect key="frame" x="272" y="390" width="57" height="30"/>
+                                <state key="normal" title="Extreme">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createExtremeGame:" destination="GZQ-e3-JEz" eventType="touchUpInside" id="3Hs-aA-zt2"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="JS3-WJ-17R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgD-bW-8KF">
+                                <rect key="frame" x="284" y="90" width="33" height="30"/>
+                                <state key="normal" title="Easy">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createEasyGame:" destination="GZQ-e3-JEz" eventType="touchUpInside" id="j4A-cc-xdr"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="go5-ih-zL0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16078431372549021" green="0.23921568627450981" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="VsY-nZ-cPd" secondAttribute="centerX" id="1j4-1Y-aIa"/>
+                            <constraint firstItem="OgD-bW-8KF" firstAttribute="top" secondItem="uwu-Ma-lFp" secondAttribute="bottom" constant="70" id="4Ps-Md-kg5"/>
+                            <constraint firstItem="rep-ay-2ys" firstAttribute="centerX" secondItem="OgD-bW-8KF" secondAttribute="centerX" id="B62-0p-Lkc"/>
+                            <constraint firstItem="LNj-Db-f0f" firstAttribute="top" secondItem="VsY-nZ-cPd" secondAttribute="bottom" constant="70" id="N92-Iu-0bD"/>
+                            <constraint firstItem="rep-ay-2ys" firstAttribute="centerX" secondItem="LNj-Db-f0f" secondAttribute="centerX" id="SAp-UD-emp"/>
+                            <constraint firstAttribute="centerX" secondItem="OgD-bW-8KF" secondAttribute="centerX" id="TJh-F9-0IS"/>
+                            <constraint firstAttribute="centerX" secondItem="rep-ay-2ys" secondAttribute="centerX" id="Uds-kX-fzc"/>
+                            <constraint firstItem="rep-ay-2ys" firstAttribute="top" secondItem="OgD-bW-8KF" secondAttribute="bottom" constant="70" id="jFd-ps-XIx"/>
+                            <constraint firstAttribute="centerX" secondItem="LNj-Db-f0f" secondAttribute="centerX" id="rjh-9k-F16"/>
+                            <constraint firstItem="rep-ay-2ys" firstAttribute="centerX" secondItem="VsY-nZ-cPd" secondAttribute="centerX" id="u8f-YL-DQT"/>
+                            <constraint firstItem="VsY-nZ-cPd" firstAttribute="top" secondItem="rep-ay-2ys" secondAttribute="bottom" constant="70" id="xD7-3I-eMi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="EaV-KG-zBW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="le4-mR-jcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="421" y="199"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Tasq" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="maK-i9-Uhn"/>
                         <viewControllerLayoutGuide type="bottom" id="khH-OB-KpY"/>
@@ -20,6 +98,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="333" y="966"/>
+        </scene>
+        <!--MainMenu-->
+        <scene sceneID="Xun-4y-7Qh">
+            <objects>
+                <viewController title="MainMenu" id="ag6-OE-QYy" customClass="MainMenuController" customModule="Tasq" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eqE-8H-jHD"/>
+                        <viewControllerLayoutGuide type="bottom" id="4RD-FG-jEx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1oB-IW-mGA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYT-kE-e85">
+                                <rect key="frame" x="245" y="285" width="111" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="WVO-WI-2dd"/>
+                                </constraints>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="GZQ-e3-JEz" kind="show" id="EQR-f4-1sx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16078431372549021" green="0.23921568627450981" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HYT-kE-e85" firstAttribute="centerX" secondItem="1oB-IW-mGA" secondAttribute="centerX" id="YG5-1n-Qh4"/>
+                            <constraint firstItem="HYT-kE-e85" firstAttribute="centerY" secondItem="1oB-IW-mGA" secondAttribute="centerY" id="yJJ-BN-9Em"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BY5-Lm-diF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-458" y="199"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hUE-MK-wBk"/>
+    </inferredMetricsTieBreakers>
 </document>

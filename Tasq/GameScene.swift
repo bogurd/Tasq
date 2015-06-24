@@ -17,7 +17,15 @@ class GameScene: SKScene {
 //        println("singleton size is \(BoardNode.sharedNode.boardSize)")
         self.addChild(BoardNode.sharedNode.boardArea)
         BoardNode.sharedNode.fillBoard()
-
+        
+        //Back Button Implementation
+//        let backButton = SKLabelNode(text: "Back")
+//        backButton.position = screenCenter
+//        backButton.position.y += screenSize.height/2-30
+//        backButton.fontSize = 18
+//        backButton.fontColor = UIColor.whiteColor()
+//        backButton.name = "backButton"
+//        self.addChild(backButton)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -30,8 +38,9 @@ class GameScene: SKScene {
             if spriteTouched.name == "Light" {
                 let light = spriteTouched as! Light
                 light.touched()
+            }else if spriteTouched.name == "backButton" {
+                GameViewController().presentViewController(GameDifficultyController(), animated: true, completion: nil)
             }
-            println(location)
             
 //            let light = Light(position: (1, 3), boxSize: CGSize(width: 50, height: 50))
 //            light.position = location

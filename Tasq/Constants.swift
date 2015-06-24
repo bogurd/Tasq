@@ -14,9 +14,29 @@ import UIKit
 let debug = false
 
 //Dimension Related
-let borderFraction: Double = 1/25
-let marginFraction: Double = 1/35
-let borderScale: CGFloat = 0.98
+let borderFractioniPhone: Double = 1/25
+let marginFractioniPhone: Double = 1/35
+let borderScaleiPhone: CGFloat = 0.98
+
+let borderFractioniPad: Double = 1/25
+let marginFractioniPad: Double = 1/35
+let borderScaleiPad: CGFloat = 0.98
+
+var borderFraction: Double = 0
+var marginFraction: Double = 0
+var borderScale: CGFloat = 0
+
+func initConstants(){
+    if UIDevice.currentDevice().userInterfaceIdiom == .Phone{
+        borderFraction = borderFractioniPhone
+        marginFraction = marginFractioniPhone
+        borderScale = borderScaleiPhone
+    }else if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+        borderFraction = borderFractioniPad
+        marginFraction = marginFractioniPad
+        borderScale = borderScaleiPad
+    }
+}
 
 var screenSize = UIScreen.mainScreen().bounds.size
 var screenCenter = CGPoint(x: screenSize.width/2, y: screenSize.height/2)
@@ -35,4 +55,8 @@ let boardColor = UIColor(red: 29.0/255.0, green: 45.0/255.0, blue: 68.0/255.0, a
 let lightColorOn = UIColor(red: 116.0/255.0, green: 140.0/255.0, blue: 171.0/255.0, alpha: 1.0)
 let lightColorOff = UIColor(red: 13.0/255.0, green: 19.0/255.0, blue: 33.0/255.0, alpha: 1.0)
 
-var sharedNode = BoardNode()
+//Game
+var difficulty = gameDifficulty.normal
+
+
+
