@@ -28,7 +28,7 @@ class Light: SKShapeNode{
         var xpos = border + deltaX*boxSize + deltaX*margin
         var ypos = border + deltaY*boxSize + deltaY*margin
         xpos += (Double(borderScale-1)*Double(screenSize.width))/2
-        ypos += (Double(borderScale-1)*Double(screenSize.width))/4
+        ypos += (Double(borderScale-1)*Double(screenSize.width))/2
         //Actually not sure if ypos is perfectly centered, will have to see. 
         
         var lightRect = CGRect(origin: CGPoint(x: xpos, y: ypos), size: CGSize(width: boxSize, height: boxSize))
@@ -62,31 +62,7 @@ class Light: SKShapeNode{
         }
     }
     
-    func touched(){
-        var max = BoardNode.sharedNode.boardSize
-        var x = positionInBoard.x
-        var y = positionInBoard.y
-        //convert conventional counting to array places
-        x -= 1
-        y -= 1
-        max -= 1
-        self.toggle()
-        
-        //Check if the adjacent lights exist and toggle them (couldn't think of a better way to do it)
-        if x-1>=0{
-            BoardNode.sharedNode.board[x-1][y].toggle()
-        }
-        if x+1<=max{
-            BoardNode.sharedNode.board[x+1][y].toggle()
-        }
-        if y-1>=0{
-            BoardNode.sharedNode.board[x][y-1].toggle()
-        }
-        if y+1<=max{
-            BoardNode.sharedNode.board[x][y+1].toggle()
-        }
-
-    }
+    
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         /* Called when a touch begins */

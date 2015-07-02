@@ -38,8 +38,6 @@ class BoardNode: SKNode{
         boardArea.position.x += (screenSize.width-screenSize.width*borderScale)/2.0
         
         boardSize = 2*difficulty.rawValue+1
-        //loop through
-        
     }
     
     
@@ -47,26 +45,16 @@ class BoardNode: SKNode{
     func fillBoard(){
         for x in 1...boardSize {
             
-            //array with a light row
+            //array with a light column
             var lightColumn = [Light]()
             
             for y in 1...boardSize {
                 
-                //Calculate the box size (one dimension, it's a square so it doesn't matter)
-                
-                //Create a light object and put the boolvalue inside the column/board (unsure if it copies or references, ideally, it should reference)
-                
+                //Create a light object and put it inside the column/board                
                 var light = Light(position: (x,y))
                 lightColumn.append(light)
                 //println("appended Light of position \(light.positionInBoard)")
                 
-                
-                //
-                //TODO
-                //
-                //make the curve a function of boardSize
-                
-                //Assinging the position to the light node
             }
             
             //place the row into the board
@@ -76,19 +64,61 @@ class BoardNode: SKNode{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //getDeviceWidth = width = height
-    //position = (width/2,height/2)
 
+    func shuffle(){
+        for i in 1...100{
+            let x = arc4random()%UInt32(self.boardSize)
+            let y = arc4random()%UInt32(self.boardSize)
+            
+            self.touched(Int(x)+1,y: Int(y)+1)
+        }
+    }
     
+    func touched(x: Int, y: Int){
+        var max = BoardNode.sharedNode.boardSize
+        //convert conventional counting to array places
+        var x = x
+        var y = y
+        if x != 0 && y != 0{
+            x -= 1
+            y -= 1
+        }
+        max -= 1
+        
+        self.board[x][y].toggle()
+        
+        //Check if the adjacent lights exist and toggle them (couldn't think of a better way to do it)
+        if x-1>=0{
+            self.board[x-1][y].toggle()
+        }
+        if x+1<=max{
+            self.board[x+1][y].toggle()
+        }
+        if y-1>=0{
+            self.board[x][y-1].toggle()
+        }
+        if y+1<=max{
+            self.board[x][y+1].toggle()
+        }
+        
+    }
+    
+    func checkIfWon(){
+        var lightsAreOn = true
+        for x in 0...boardSize-1 {
+            var isColumnOn = true
+            for y in 0...boardSize-1 {
+                isColumnOn = isColumnOn && self.board[x][y].isOn
+            }
+            lightsAreOn = lightsAreOn && isColumnOn
+        }
+        
+        if lightsAreOn {
+            for lightRow in BoardNode.sharedNode.board{
+                for light in lightRow{
+                    light.fillColor = lightColorWon
+                }
+            }
+        }
+    }
 }
-
-//Temp Math Section
-
-//boxsize = (whole - 2*border*whole - (size-1)*margin*whole)/boardSize
-//
-//Rxpos = border*whole + ((x-1)*boxsize) + (x-1)*margin*whole + boxsize/2
-//Rypos = border*whole + ((y-1)*boxsize) + (y-1)*margin*whole + boxsize/2
-//
-//xpos = Rxpos
-//ypos = Rypos + ((height-whole)/2)

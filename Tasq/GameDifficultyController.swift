@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class GameDifficultyController: UIViewController{
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue | UIInterfaceOrientationMask.PortraitUpsideDown.rawValue)
+    }
 
     @IBAction func createEasyGame(sender: AnyObject) {
         difficulty = .easy

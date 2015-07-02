@@ -26,6 +26,20 @@ class GameScene: SKScene {
 //        backButton.fontColor = UIColor.whiteColor()
 //        backButton.name = "backButton"
 //        self.addChild(backButton)
+//        
+        let shuffleButton = SKSpriteNode(imageNamed: "shuffleButton")
+        let shuffleButtonBackground = SKShapeNode(rectOfSize: shuffleButton.size, cornerRadius: 6)
+        shuffleButton.position = topLine
+        shuffleButton.position.x = screenSize.width-BoardNode.sharedNode.boardArea.position.x-CGFloat(border)*2
+        shuffleButton.runAction(SKAction.colorizeWithColor(lightColorOff, colorBlendFactor: 1, duration: 0))
+        shuffleButton.xScale /= 2
+        shuffleButton.yScale /= 2
+        shuffleButtonBackground.fillColor = lightColorOn
+        shuffleButtonBackground.lineWidth = 0
+        shuffleButtonBackground.position = shuffleButton.position
+        shuffleButtonBackground.name = "shuffleButton"
+        self.addChild(shuffleButton)
+        self.addChild(shuffleButtonBackground)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -37,9 +51,12 @@ class GameScene: SKScene {
             
             if spriteTouched.name == "Light" {
                 let light = spriteTouched as! Light
-                light.touched()
+                BoardNode.sharedNode.touched(light.positionInBoard.x, y: light.positionInBoard.y)
+                BoardNode.sharedNode.checkIfWon()
             }else if spriteTouched.name == "backButton" {
-                GameViewController().presentViewController(GameDifficultyController(), animated: true, completion: nil)
+                
+            }else if spriteTouched.name == "shuffleButton" {
+                BoardNode.sharedNode.shuffle()
             }
             
 //            let light = Light(position: (1, 3), boxSize: CGSize(width: 50, height: 50))

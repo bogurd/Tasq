@@ -77,6 +77,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EaV-KG-zBW"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="le4-mR-jcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,10 +97,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <segue destination="ag6-OE-QYy" kind="presentation" identifier="backToMenu" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="Ouv-3X-tUn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="333" y="966"/>
+            <point key="canvasLocation" x="348" y="971"/>
         </scene>
         <!--MainMenu-->
         <scene sceneID="Xun-4y-7Qh">
@@ -134,6 +141,7 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BY5-Lm-diF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,4 +13,8 @@ class MainMenuController: UIViewController{
     
     override func viewDidLoad() {
     }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue | UIInterfaceOrientationMask.PortraitUpsideDown.rawValue)
+    }
 }

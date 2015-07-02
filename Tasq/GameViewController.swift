@@ -62,4 +62,12 @@ class GameViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+//    func showWonAlert(){
+//        var alert = UIAlertController(title: "Win!", message: "You won!", preferredStyle: UIAlertControllerStyle.Alert)
+//        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+//        alert.view = alert.view as! SKView
+//        self.presentViewController(alert, animated: true, completion: nil)
+//    }
+
 }
