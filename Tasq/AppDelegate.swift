@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Tasq
 //
-//  Created by George Katsikas on 29/02/2020.
+//  Created by George Katsikas on 27/02/2020.
 //  Copyright © 2020 George Katsikas. All rights reserved.
 //
 

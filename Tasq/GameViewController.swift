@@ -2,13 +2,12 @@
 //  GameViewController.swift
 //  Tasq
 //
-//  Created by George Katsikas on 29/02/2020.
+//  Created by George Katsikas on 27/02/2020.
 //  Copyright © 2020 George Katsikas. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
-import GameplayKit
 
 class GameViewController: UIViewController {
 
@@ -16,32 +15,18 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
+            let scene = MainMenuScene(size: UIScreen.main.bounds.size)
+            scene.scaleMode = .aspectFit
+            view.presentScene(scene)
         }
     }
 
     override var shouldAutorotate: Bool {
-        return true
+        return false
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .portrait
     }
 
     override var prefersStatusBarHidden: Bool {
