@@ -37,6 +37,13 @@ class Light: SKShapeNode {
         )
         self.fillColor = lightOffColor
         self.strokeColor = SKColor.clear
+        
+        if debugMode {
+            let tapCounter = SKLabelNode.init(text: "0")
+            tapCounter.name = "tapCounter"
+            tapCounter.verticalAlignmentMode = .center
+            self.addChild(tapCounter)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -70,6 +77,10 @@ class BoardLight: Light {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let tapCounter = self.childNode(withName: "tapCounter") as! SKLabelNode?{
+            tapCounter.text = String(Int(tapCounter.text!)! + 1)
+        }
+        
         if let board: Board = self.parent as? Board {
             board.toggleLights(gridPosition: self.gridPosition)
         }

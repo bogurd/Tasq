@@ -9,6 +9,8 @@
 import UIKit
 import SpriteKit
 
+let debugMode = true
+
 let rightPushTransition = SKTransition.push(with: .left, duration: 0.5)
 
 var screenHeight = UIScreen.main.bounds.height
