@@ -9,7 +9,15 @@
 import SpriteKit
 import UIKit
 
-class MainMenuScene: SKScene {
+class MainMenuScene: GameScene {
+    
+    init() {
+        super.init(size: UIScreen.main.bounds.size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMove(to view: SKView) {
         let title = SKLabelNode(text: "Tasq")
@@ -24,7 +32,7 @@ class MainMenuScene: SKScene {
     
     func selectDifficulty() {
         guard let view = self.view else { return }
-        let scene = DifficultySelectionScene(size: UIScreen.main.bounds.size)
+        let scene = DifficultySelectionScene(previousScene: self)
         scene.scaleMode = .aspectFit
         view.presentScene(scene, transition: rightPushTransition)
     }

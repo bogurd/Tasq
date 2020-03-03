@@ -9,7 +9,15 @@
 import SpriteKit
 import UIKit
 
-class DifficultySelectionScene: SKScene {
+class DifficultySelectionScene: GameScene {
+
+    init(previousScene: SKScene) {
+        super.init(size: UIScreen.main.bounds.size, previousScene: previousScene)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMove(to view: SKView) {
         let newGameTitle = SKLabelNode(text: "New Game")
@@ -28,8 +36,7 @@ class DifficultySelectionScene: SKScene {
     
     func createGameWithDifficulty(difficulty: GameDifficulty) -> () {
         guard let view = self.view else { return }
-        let scene = GameScene(size: UIScreen.main.bounds.size,
-                              difficulty: difficulty)
+        let scene = MainGameScene(previousScene: self, difficulty: difficulty)
         scene.scaleMode = .aspectFit
         view.presentScene(scene, transition: rightPushTransition)
     }

@@ -9,43 +9,29 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    var difficulty: GameDifficulty = .normal
+    var previousScene: SKScene?
     
-    init(size: CGSize, difficulty: GameDifficulty){
+    init(size: CGSize, previousScene: SKScene? = nil){
         super.init(size: size)
-        self.difficulty = difficulty
+        self.previousScene = previousScene
+        
+        if self.previousScene != nil {
+            let backButton = Button(text: "Back", tapCallback: transitionToPreviousScene)
+            backButton.setScale(0.75)
+            backButton.position = topLeft + backButton.frame.bottomRight + 20*unitVec(-1*Double.pi/4)
+            self.addChild(backButton)
+        }
     }
     
-    override func didMove(to view: SKView) {
-        let board = Board(boardSize: self.difficulty.rawValue)
-        board.setScale(0.95)
-        board.position = centerOfScreen
-        self.addChild(board)
+    func transitionToPreviousScene() {
+        guard let view = self.view else { return }
+        if let scene = self.previousScene {
+            scene.scaleMode = .aspectFit
+            view.presentScene(scene, transition: leftPushTransition)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        guard let scene = scene else {
-//            print("error with scene")
-//            return
-//        }
-//        guard let touch = touches.first else {
-//            print("error with touch")
-//            return
-//        }
-//        
-//        let l = Light.init(size: 50)
-//        l.position = touch.location(in: scene)
-//        print(touch.location(in: scene))
-//        self.addChild(l)
-//    }
-    
-    
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
     }
 }
