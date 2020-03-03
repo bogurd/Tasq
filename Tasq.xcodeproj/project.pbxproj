@@ -17,6 +17,7 @@
 		C536ED62240A85F100A4E80B /* DifficultySelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536ED57240A85F000A4E80B /* DifficultySelectionScene.swift */; };
 		C536ED64240A85F100A4E80B /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536ED59240A85F000A4E80B /* MainMenuScene.swift */; };
 		C536ED66240A85F100A4E80B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536ED5B240A85F000A4E80B /* Constants.swift */; };
+		C59ABB65240E8621005BCEB8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59ABB64240E8621005BCEB8 /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C536ED57240A85F000A4E80B /* DifficultySelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultySelectionScene.swift; sourceTree = "<group>"; };
 		C536ED59240A85F000A4E80B /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		C536ED5B240A85F000A4E80B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C59ABB64240E8621005BCEB8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				C536ED29240A84C600A4E80B /* GameScene.swift */,
 				C536ED53240A85EF00A4E80B /* Board.swift */,
 				C536ED55240A85F000A4E80B /* Light.swift */,
+				C59ABB64240E8621005BCEB8 /* Button.swift */,
 				C536ED5B240A85F000A4E80B /* Constants.swift */,
 				C536ED52240A85EF00A4E80B /* AppDelegate.swift */,
 				C536ED2D240A84C600A4E80B /* Main.storyboard */,
@@ -178,6 +181,7 @@
 				C536ED5D240A85F100A4E80B /* AppDelegate.swift in Sources */,
 				C536ED2A240A84C600A4E80B /* GameScene.swift in Sources */,
 				C536ED5E240A85F100A4E80B /* Board.swift in Sources */,
+				C59ABB65240E8621005BCEB8 /* Button.swift in Sources */,
 				C536ED2C240A84C600A4E80B /* GameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
