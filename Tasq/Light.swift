@@ -12,7 +12,6 @@ class Light: SKShapeNode {
     
     var switchedOn: Bool = false
     var size: CGFloat
-    var gridPosition: (Int,Int)?
     
     override var isUserInteractionEnabled: Bool {
         set {
@@ -40,11 +39,6 @@ class Light: SKShapeNode {
         self.strokeColor = SKColor.clear
     }
     
-    convenience init(size: CGFloat, gridPosition: (Int,Int)){
-        self.init(size: size)
-        self.gridPosition = gridPosition
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -59,8 +53,25 @@ class Light: SKShapeNode {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {        
+        self.toggle()
+    }
+}
+
+class BoardLight: Light {
+    var gridPosition: (Int,Int)
+    
+    init(size: CGFloat, gridPosition: (Int,Int)){
+        self.gridPosition = gridPosition
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let board: Board = self.parent as? Board {
-            board.toggleLights(gridPosition: self.gridPosition!)
+            board.toggleLights(gridPosition: self.gridPosition)
         }
     }
 }

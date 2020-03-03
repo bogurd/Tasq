@@ -9,7 +9,7 @@
 import SpriteKit
 
 class Board: SKShapeNode{
-    var lights: [[Light]]
+    var lights: [[BoardLight]]
     var boardSize: Int
     var centerTransform = CGAffineTransform.init(translationX: -0.5*screenWidth,
                                                  y: -0.5*screenWidth)
@@ -31,9 +31,9 @@ class Board: SKShapeNode{
         self.strokeColor = SKColor.clear
 
         for i in 0..<self.boardSize {
-            var lightCol = [Light]()
+            var lightCol = [BoardLight]()
             for j in 0..<self.boardSize {
-                let light =  Light(size: borderPerc*screenWidth/CGFloat(self.boardSize),
+                let light =  BoardLight(size: borderPerc*screenWidth/CGFloat(self.boardSize),
                                    gridPosition: (i,j))
                 light.position = CGPoint(
                     x:CGFloat(i-lightOffset)*light.size*lightBorderFactor,
