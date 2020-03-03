@@ -16,25 +16,17 @@ class MainMenuScene: SKScene {
         title.fontSize = 100
         title.position = centerOfScreen.applying(CGAffineTransform.init(translationX: 0, y: screenHeight/4))
         self.addChild(title)
-        
-        let newGameButton = SKLabelNode(text: "New Game")
-        newGameButton.name = "newGameButton"
-        newGameButton.fontSize = 52
+    
+        let newGameButton = Button(text: "New Game", tapCallback: selectDifficulty)
         newGameButton.position = centerOfScreen
         self.addChild(newGameButton)
-        
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        guard let touchedNode = nodes(at: touch.location(in: self)).first else { return }
+    func selectDifficulty() {
         guard let view = self.view else { return }
-        
-        if touchedNode.name == "newGameButton" {
-            let scene = DifficultySelectionScene(size: UIScreen.main.bounds.size)
-            scene.scaleMode = .aspectFit
-            view.presentScene(scene, transition: rightPushTransition)
-        }
+        let scene = DifficultySelectionScene(size: UIScreen.main.bounds.size)
+        scene.scaleMode = .aspectFit
+        view.presentScene(scene, transition: rightPushTransition)
     }
     
 }
