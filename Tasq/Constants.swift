@@ -30,6 +30,9 @@ var borderPerc: CGFloat = 0.85
 
 var lightOnColor = SKColor.init(named: "lightOnColor") ?? SKColor.white
 var lightOffColor = SKColor.init(named: "lightOffColor") ?? SKColor.black
+var boardColor = SKColor.init(named: "boardColor") ?? SKColor.blue
+var gameBackgroundColor = SKColor.init(named: "backgroundColor") ?? SKColor.darkGray
+var colorsArray: [SKColor] = [lightOnColor, lightOffColor, boardColor, gameBackgroundColor]
 
 enum GameDifficulty: Int, CaseIterable {
     case easy = 3
@@ -79,5 +82,29 @@ extension CGRect {
     }
     var bottomRight: CGPoint {
         return CGPoint(x: 0.5*self.width, y: -0.5*self.height)
+    }
+}
+
+extension UIColor {
+
+     func tweak(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> UIColor {
+
+        var currentHue: CGFloat = 0.0
+        var currentSaturation: CGFloat = 0.0
+        var currentBrigthness: CGFloat = 0.0
+        var currentAlpha: CGFloat = 0.0
+
+        if self.getHue(&currentHue, saturation: &currentSaturation, brightness: &currentBrigthness, alpha: &currentAlpha) {
+            return UIColor(hue: currentHue + hue,
+                           saturation: currentSaturation + saturation,
+                           brightness: currentBrigthness + brightness,
+                           alpha: currentAlpha + alpha)
+        } else {
+            return self
+        }
+    }
+    
+    func tweakHue(hue: CGFloat) -> UIColor {
+        return tweak(hue: hue, saturation: 0, brightness: 0, alpha: 0)
     }
 }

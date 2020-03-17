@@ -21,6 +21,8 @@ class GameScene: SKScene {
             backButton.position = topLeft + backButton.frame.bottomRight + 20*unitVec(-1*Double.pi/4)
             self.addChild(backButton)
         }
+        
+        self.backgroundColor = gameBackgroundColor
     }
     
     func transitionToPreviousScene() {

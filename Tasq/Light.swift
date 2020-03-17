@@ -41,6 +41,7 @@ class Light: SKShapeNode {
         if debugMode {
             let tapCounter = SKLabelNode.init(text: "0")
             tapCounter.name = "tapCounter"
+            tapCounter.fontColor = lightOnColor
             tapCounter.verticalAlignmentMode = .center
             self.addChild(tapCounter)
         }
@@ -54,8 +55,14 @@ class Light: SKShapeNode {
         self.switchedOn = !self.switchedOn
         if self.switchedOn {
             self.fillColor = lightOnColor
+            if let counter = self.childNode(withName: "tapCounter") as? SKLabelNode {
+                counter.fontColor = lightOffColor
+            }
         } else {
             self.fillColor = lightOffColor
+            if let counter = self.childNode(withName: "tapCounter") as? SKLabelNode {
+                counter.fontColor = lightOnColor
+            }
         }
     }
     

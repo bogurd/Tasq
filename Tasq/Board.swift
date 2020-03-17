@@ -27,7 +27,7 @@ class Board: SKShapeNode{
             cornerHeight: screenWidth/40,
             transform: &centerTransform
         )
-        self.fillColor = SKColor.blue
+        self.fillColor = boardColor
         self.strokeColor = SKColor.clear
 
         for i in 0..<self.boardSize {
