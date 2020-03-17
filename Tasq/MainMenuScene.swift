@@ -28,6 +28,10 @@ class MainMenuScene: GameScene {
         let newGameButton = Button(text: "New Game", tapCallback: selectDifficulty)
         newGameButton.position = centerOfScreen
         self.addChild(newGameButton)
+        
+        let settingsButton = Button(text: "Settings", tapCallback: goToSettings)
+        settingsButton.position = centerOfScreen + (0,-screenHeight/4)
+        self.addChild(settingsButton)
     }
     
     func selectDifficulty() {
@@ -37,4 +41,11 @@ class MainMenuScene: GameScene {
         view.presentScene(scene, transition: rightPushTransition)
     }
     
+    func goToSettings() {
+        guard let view = self.view else { return }
+        let scene = SettingsScene(previousScene: self)
+        scene.scaleMode = .aspectFit
+        view.presentScene(scene, transition: rightPushTransition)
+    }
+
 }
