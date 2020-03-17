@@ -55,6 +55,24 @@ class Board: SKShapeNode{
                 self.lights[light.0][light.1].toggle()
             }
         }
+        
+        if self.checkIfWon() {
+            let wonLabel = SKLabelNode(text: "You Win!")
+            wonLabel.fontSize = 52
+            wonLabel.position = CGPoint.zero + (0, 3/8*screenHeight)
+            self.addChild(wonLabel)
+        }
+    }
+    
+    func checkIfWon() -> Bool {
+        for lightCol in lights {
+            for light in lightCol {
+                if !light.switchedOn {
+                    return false
+                }
+            }
+        }
+        return true
     }
     
     required init?(coder aDecoder: NSCoder) {
